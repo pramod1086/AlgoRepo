@@ -1,0 +1,5 @@
+/target/classes/com/pramod/algorithm/*/*.class
+/target/classes/com/pramod/*/*.class
+/target/surefire-reports/com.pramod.java8.AppTest.txt
+*.class
+/target
