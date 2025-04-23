@@ -2,53 +2,40 @@ package com.pramod.algorithm.leetcode;
 
 public class LongestSubstringWithoutRepeatingCharacters {
     public static void main(String args[]) {
-        String str = "pwwkew";
-        LongestSubstringWithoutRepeatingCharacters ls = new LongestSubstringWithoutRepeatingCharacters();
-        int k = ls.lengthOfLongestSubstring(str);
-        System.out.print(k);
+        String str = "abcabcbb";
+         int result = new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring(str);
+        System.out.print(result);
     }
 
-    public int lengthOfLongestSubstring(String s) {
-        int max = 0;
-        int   maxLength =0;
-        int length = s.length()-1;
+    private int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        int res = 0;
 
-        char [] ch = new char[256];
-
-
-
-        int right =0;
-        int left =0;
-
-//        Input: s = "abcabcbb"
-//        Output: 3
-//        Explanation: The answer is "abc", with the length of 3.
-//        Example 2:
-//
-//        Input: s = "bbbbb"
-//        Output: 1
-//        Explanation: The answer is "b", with the length of 1.
-//        Example 3:
-//
-//        Input: s = "pwwkew"
-//        Output: 3
-//        Explanation: The answer is "wke", with the length of 3.
-//        Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
-
-        while(right!=length){
-            char element = s.charAt(right);
-            ch[element]++;
-
-            while(ch[right]>1){
-               left++;
-            }
-         //   maxLength = Math.max(maxLength,right-left+1);
-            right ++;
-
+        // last index of all characters is initialized as -1
+        int[] lastIndex = new int[26];
+        for (int i = 0; i < 26; i++) {
+            lastIndex[i] = -1;
         }
-        System.out.println(maxLength);
 
-        return maxLength;
+        // Initialize start of current window
+        int start = 0;
+
+        // Move end of current window
+        for (int end = 0; end < n; end++) {
+
+            // Find the last index of s[end]
+            // Update starting index of current window as
+            // maximum of current value of end and last index + 1
+            start = Math.max(start, lastIndex[s.charAt(end) - 'a'] + 1);
+
+            // Update result if we get a larger window
+            res = Math.max(res, end - start + 1);
+
+            // Update last index of s[end]
+            lastIndex[s.charAt(end) - 'a'] = end;
+        }
+        return res;
     }
+
 
 }

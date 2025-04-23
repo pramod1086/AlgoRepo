@@ -3,3 +3,4 @@
 /target/surefire-reports/com.pramod.java8.AppTest.txt
 *.class
 /target
+.qodo

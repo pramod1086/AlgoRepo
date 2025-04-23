@@ -15,23 +15,32 @@ public class LRUCache {
 
 
 
-    public int get(int key)
+    public String get(Integer key)
+    {
+        if(!hashMap.containsKey(key)){
+            return null;
+        }
+
+
+        linkedList.remove(key);
+        linkedList.addFirst(key);
+
+        return  (String) hashMap.get(key);
+    }
+
+    public void put(int key,String value)
     {
 
         if(hashMap.containsKey(key)){
+            linkedList.remove(key);
 
-
+        }else if(hashMap.size()>=capacity){
+            Integer lis = (Integer)linkedList.removeLast();
+            hashMap.remove(lis);
         }
-        System.out.println("Going to get the value " +
-                "for the key : " + key);
-        return 0;
-    }
+        hashMap.put(key,value);
+        linkedList.addFirst(key);
 
-    public void setKey(int key)
-    {
-        System.out.println("Going to get the value " +
-                "for the key : " + key);
-      //  return map.getOrDefault(key, -1);
     }
 
 }

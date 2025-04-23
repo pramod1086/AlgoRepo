@@ -52,8 +52,7 @@ public class ManageeCount {
             List<EmployeeNode> reportees = empNode.reportees;
 
             if(reportees!=null){
-                int count = reportees.size();
-                List<EmployeeNode> reporteesList=    reportees.stream().filter(employee->employee.reportees!=null).collect(Collectors.toList());
+                List<EmployeeNode> reporteesList =    reportees.stream().filter(employee->employee.reportees!=null).collect(Collectors.toList());
                 for(EmployeeNode employeeNode :reporteesList){
                     updatedCount  = 1+getManagesCount(employeeNode);
 //                   int     returnedcount =   getManagesCount(employeeNode);
