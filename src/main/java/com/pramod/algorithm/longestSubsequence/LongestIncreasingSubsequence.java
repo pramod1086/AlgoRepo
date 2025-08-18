@@ -11,6 +11,34 @@ public class LongestIncreasingSubsequence {
         System.out.println(ls.getLongestIncreasingSubsequence(nums));
         System.out.println(ls.getLongestIncreasingSubsequenceUsingRecursion(nums));
         System.out.println(ls.getLongestIncreasingSubsequenceUsingMemoization(nums));
+        System.out.println(ls.getLongestIncreasingSubsequenceUsingBinarySearch(nums));
+
+    }
+
+
+
+    private int getLongestIncreasingSubsequenceUsingBinarySearch(int[] nums) {
+
+        int arr[] = new int[nums.length];
+
+        int length = 0;
+
+        for(int value:nums){
+            int index = Arrays.binarySearch(arr,0,length,value);
+
+            if(index <0){
+                index = -(index+1);
+            }
+
+            arr[index] = value;
+
+            if(index==length){
+                length++;
+            }
+
+        }
+        return length;
+
 
     }
 
@@ -20,10 +48,10 @@ public class LongestIncreasingSubsequence {
         int result[] = new int[len];
         Arrays.fill(result,1);
 
-        for(int i=1;i<len;i++){
-            for(int j=0;j<i;j++){
-                if(nums[j]<nums[i] && result[i] <result[j]+1){
-                    result[i] = result[j]+1;
+        for (int i = 1; i < len; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    result[i] = Math.max(result[i], result[j] + 1);
                 }
             }
         }

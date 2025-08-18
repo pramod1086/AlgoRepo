@@ -1,5 +1,7 @@
 package com.pramod.algorithm.longestSubstring;
 
+import java.util.HashSet;
+
 public class LongestSubstringWithoutRepeatingCharacters {
     // Driver code
     public static void main(String[] args)
@@ -11,8 +13,35 @@ public class LongestSubstringWithoutRepeatingCharacters {
         System.out.println("The length of the longest "
                 + "non-repeating character "
                 + "substring is " + len);
+
+        System.out.println("The length of the longest "
+                + "non-repeating character "
+                + "substring is " + longestUniqueUsinSet("au"));
     }
 
+    private static int longestUniqueUsinSet(String s) {
+//        Char[] ch = s.toCharArray()
+
+        int maxLenght =0;
+
+        int length = s.length();
+
+        for(int i=0;i<length;i++){
+            HashSet set = new HashSet();
+            int count = 0;
+            for(int j=i;j<length;j++){
+                if(set.contains(s.charAt(j))){
+                    break;
+                }else {
+                    set.add(s.charAt(j));
+                }
+            }
+            maxLenght = Math.max(maxLenght,set.size());
+        }
+
+
+        return maxLenght;
+    }
 
         private static int longestUniqueSubstt(String s) {
 
@@ -22,7 +51,6 @@ public class LongestSubstringWithoutRepeatingCharacters {
              boolean arr[] = new boolean[256];
 
             for(int i=0;i<length;i++){
-//                boolean arr[] = new boolean[256];
                 for(int j=i;j<length;j++){
 
                     if(arr[s.charAt(j)]==true){

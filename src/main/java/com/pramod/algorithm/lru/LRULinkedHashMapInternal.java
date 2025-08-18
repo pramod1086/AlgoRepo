@@ -2,26 +2,28 @@ package com.pramod.algorithm.lru;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class LRULinkedHashMapInternal {
 
     private final int capacity;
 
-    private final HashMap map;
+    private final  HashMap <Integer,String>map;
 
 
 
     public LRULinkedHashMapInternal(int capacity) {
         this.capacity = capacity;
-        map = new LinkedHashMap(capacity);
-      //  private final HashMap map;
-
-//        super(capacity, 0.75f, true); // true for access-order
-//        this.capacity = capacity;
+        map = new LinkedHashMap<Integer,String>(capacity){
+            @Override
+            protected boolean removeEldestEntry(Map.Entry<Integer,String> eldest) {
+                return size() > capacity;
+            }
+        };
     }
 
     public String getCache(Integer key) {
-       return (String) map.getOrDefault(key, null);
+       return  map.getOrDefault(key, null);
      //   return super.getOrDefault(key, null);
     }
 
