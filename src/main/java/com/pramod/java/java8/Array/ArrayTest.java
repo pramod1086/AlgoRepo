@@ -18,6 +18,11 @@ public class ArrayTest {
 
         /// to add all element in array
 
+        for(int i = 0; i < arr.length; i++)
+        {
+            arr[i]++;
+        }
+
         int sum = Arrays.stream(arr).reduce(0,(a,b)->a+b);
         System.out.println("the value of sum is _"+sum);
 
