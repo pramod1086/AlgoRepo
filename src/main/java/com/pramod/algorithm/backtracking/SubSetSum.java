@@ -18,6 +18,8 @@ public class SubSetSum {
 
         List<List<Integer>> result = findTargetSumSubsets(arr, sum);
         System.out.println("Subsets with target sum " + sum + ": " + result);
+        List<Integer> result1 = constructSubset(arr, sum,arr.length);
+        System.out.println("Subsets with target sum result1 " + sum + ": " + result1);
 //       List ls =  constructSubset(arr,sum,arr.length-1);
 //        System.out.println(ls);
 //

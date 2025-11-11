@@ -10,6 +10,16 @@ public class Employee implements Comparator {
 
     int id;
     String name;
+
+    public Employee(String name, int i) {
+        this.name  = name;
+        this.id = id;
+    }
+    public Employee() {
+    }
+
+    public Employee(String s) {
+    }
 //
 //    @Override
 //    public int compareTo(Object object) {

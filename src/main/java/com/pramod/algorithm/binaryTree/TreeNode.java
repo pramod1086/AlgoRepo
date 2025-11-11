@@ -1,11 +1,12 @@
 package com.pramod.algorithm.binaryTree;
 
 public class TreeNode {
-    int value;
+    public int value;
 
-    TreeNode left,right;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode(int node){
+    public TreeNode(int node){
         this.value = node;
          left = null;
         right = null;
