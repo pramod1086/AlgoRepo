@@ -36,7 +36,10 @@ public class LongestIncreasingSubsequence {
                 length++;
             }
 
+
         }
+        int arr1[] = Arrays.copyOf(arr,length);
+        System.out.println(arr1);
         return length;
 
 

@@ -1,5 +1,7 @@
 package com.pramod.java.java8.functionalInterface.biconssumer;
 
+import com.pramod.java.designpattern.builder.User;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -25,12 +27,26 @@ public class BiconsumerTesting {
 
         Integer result2 = func.apply(2, 3);
 
+        BiConsumer<User,String> bi = (user, detail)->{
+            user.setFirstName(detail);
+
+        };
+
+        BiConsumer<User,String> bi1 = User::setLastName;
+
         System.out.println(result2); // 5
         // Output:
         // Apple : 3
         // Banana : 2
         // Orange : 5
 
+        User usr = new User();
+
+        bi.accept(usr,"test");
+        System.out.println(usr); // 5
+
+        bi1.accept(usr,"delat");
+        System.out.println(usr); // 5
 
 
 
