@@ -13,7 +13,12 @@ public class MapValueIncrement {
         ms.put(3, 7);
         ms.put(4, 8);
         ms.put(5, null);
-        // ms.put(null,null);
+         ms.put(null,24);
+        ms.put(null,25);
+
+        System.out.println("the value of null is "+ms.get(null));
+
+
 
         //  Update value of HashMap using computeIfPresent()if value contains null
         for (Map.Entry<Integer, Integer> entry : ms.entrySet()) {
