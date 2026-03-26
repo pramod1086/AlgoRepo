@@ -1,4 +1,4 @@
-package com.pramod.algorithm.string;
+package com.pramod.algorithm.permutation;
 
 public class PrintAllPermutationsOfString {
     public static void main(String []args){
